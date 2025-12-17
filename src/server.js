@@ -25,6 +25,22 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Ruta raíz
+app.get("/", (req, res) => {
+  res.json({
+    message: "API REST - Sistema de Gestión de Usuarios",
+    version: "1.0.0",
+    endpoints: {
+      health: "/api/health",
+      auth: "/api/auth",
+      usuarios: "/api/usuarios",
+      roles: "/api/roles",
+      documentTypes: "/api/document-types",
+      audit: "/api/audit",
+    },
+  });
+});
+
 // Ruta de prueba
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "API funcionando correctamente" });
